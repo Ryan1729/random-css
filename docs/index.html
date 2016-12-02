@@ -15,10 +15,24 @@
 <script>
 	var units = ["px", "%", "vw", "vh"]
 
-	function getRandomDimension() {
+	function getRandomDimension(max) {
+		max = max || 100
+
 		var unit = units[Math.floor(Math.random()*units.length)]
 
-		return Math.floor(Math.random()*100) + unit
+		return Math.floor(Math.random()*max) + unit
+	}
+</script>
+<script>
+	var borderStyles = ["none" , "hidden" , "dotted" , "dashed" , "solid" , "double" , "groove" , "ridge" , "inset" , "outset"]
+
+	function getRandomBorderStyle() {
+		return borderStyles[Math.floor(Math.random()*borderStyles.length)]
+	}
+</script>
+<script>
+	function getRandomColour() {
+		return '#'+(Math.random()*0xFFFFFF|0).toString(16)
 	}
 </script>
 <script>
@@ -31,9 +45,13 @@
 			var element = nodes[i]
 
 			element.style.color =  '#'+(Math.random()*0xFFFFFF|0).toString(16);
-			element.style['background-color'] =  '#'+(Math.random()*0xFFFFFF|0).toString(16);
+			element.style['background-color'] =  getRandomColour();
 			element.style.width = getRandomDimension();
 			element.style.height = getRandomDimension();
+			element.style.border = getRandomDimension(50)
+										+ " " + getRandomBorderStyle()
+										+ " " + getRandomColour()
+
 		}
 
 		setTimeout(function() {
