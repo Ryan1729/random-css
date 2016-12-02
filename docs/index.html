@@ -15,7 +15,7 @@
 <script>
 	var units = ["px", "%", "vw", "vh"]
 
-	function getRandomDimension(max) {
+	function dimension(max) {
 		max = max || 100
 
 		var unit = units[Math.floor(Math.random()*units.length)]
@@ -26,20 +26,20 @@
 <script>
 	var borderStyles = ["none" , "hidden" , "dotted" , "dashed" , "solid" , "double" , "groove" , "ridge" , "inset" , "outset"]
 
-	function getRandomBorderStyle() {
+	function borderStyle() {
 		return borderStyles[Math.floor(Math.random()*borderStyles.length)]
 	}
 </script>
 <script>
-	function getRandomColour() {
+	function colour() {
 		return '#'+(Math.random()*0xFFFFFF|0).toString(16)
 	}
 </script>
 <script>
-	function getRandomBorder() {
-		return getRandomDimension(50)
-									+ " " + getRandomBorderStyle()
-									+ " " + getRandomColour()
+	function border() {
+		return dimension(50)
+									+ " " + borderStyle()
+									+ " " + colour()
 	}
 </script>
 <script>
@@ -52,13 +52,13 @@
 			var element = nodes[i]
 
 			element.style.color =  '#'+(Math.random()*0xFFFFFF|0).toString(16);
-			element.style['background-color'] =  getRandomColour();
-			element.style.width = getRandomDimension();
-			element.style.height = getRandomDimension();
-			element.style['border-top'] = getRandomBorder()
-			element.style['border-bottom'] = getRandomBorder()
-			element.style['border-left'] = getRandomBorder()
-			element.style['border-right'] = getRandomBorder()
+			element.style['background-color'] =  colour();
+			element.style.width = dimension();
+			element.style.height = dimension();
+			element.style['border-top'] = border()
+			element.style['border-bottom'] = border()
+			element.style['border-left'] = border()
+			element.style['border-right'] = border()
 
 		}
 
