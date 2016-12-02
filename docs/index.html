@@ -13,12 +13,28 @@
 </head>
 <body>
 <script>
-	var units = ["px", "%", "vw", "vh"]
+	function sample(array){
+		return array[Math.floor(Math.random()*array.length)]
+	}
+</script>
+<script>
+	var lengthUnits = ["px", "vw", "vh"]
+
+	function length(max) {
+		max = max || 100
+
+		var unit = sample(lengthUnits)
+
+		return Math.floor(Math.random()*max) + unit
+	}
+</script>
+<script>
+	var units = lengthUnits.concat(["%"])
 
 	function dimension(max) {
 		max = max || 100
 
-		var unit = units[Math.floor(Math.random()*units.length)]
+		var unit = sample(units)
 
 		return Math.floor(Math.random()*max) + unit
 	}
@@ -27,7 +43,7 @@
 	var borderStyles = ["none" , "hidden" , "dotted" , "dashed" , "solid" , "double" , "groove" , "ridge" , "inset" , "outset"]
 
 	function borderStyle() {
-		return borderStyles[Math.floor(Math.random()*borderStyles.length)]
+		return sample(borderStyles)
 	}
 </script>
 <script>
@@ -63,6 +79,12 @@
 			element.style['border-top-right-radius'] = dimension() + " " + dimension()
 			element.style['border-bottom-left-radius'] = dimension() + " " + dimension()
 			element.style['border-bottom-right-radius'] = dimension() + " " + dimension()
+			element.style['box-shadow'] = sample(['', 'inset'])
+														+ " " + length()
+														+ " " + length()
+														+ " " + length()
+														+ " " + length()
+														+ " " + colour()
 
 
 		}
