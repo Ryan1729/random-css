@@ -36,6 +36,13 @@
 	}
 </script>
 <script>
+	function getRandomBorder() {
+		return getRandomDimension(50)
+									+ " " + getRandomBorderStyle()
+									+ " " + getRandomColour()
+	}
+</script>
+<script>
 
 	var nodes = document.getElementsByTagName("*")
 
@@ -48,9 +55,10 @@
 			element.style['background-color'] =  getRandomColour();
 			element.style.width = getRandomDimension();
 			element.style.height = getRandomDimension();
-			element.style.border = getRandomDimension(50)
-										+ " " + getRandomBorderStyle()
-										+ " " + getRandomColour()
+			element.style['border-top'] = getRandomBorder()
+			element.style['border-bottom'] = getRandomBorder()
+			element.style['border-left'] = getRandomBorder()
+			element.style['border-right'] = getRandomBorder()
 
 		}
 
